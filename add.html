@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Transaction - Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- NAVEGATION -->
+     <nav class="nav">
+        <span class="nav-logo">Tracker</span>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Summery</a>
+            <a href="add.html" class="nav-link active">Add</a>
+            <a href="history.html" class="nav-link">History</a>
+        </div>
+     </nav>
+
+     <main class="container container--narrow">
+
+        <form class="form" id="expense-form">
+            <h1 class="form__title">New transaction</h1>
+
+            <div class="field">
+                <span class="field__label">Type</span>
+                <div class="type-toggle">
+                    <button type="button" class="type-toggle__btn active--expense" data-type="expense">Expense</button>
+                    <button type="button" class="type-toggle__btn" data-type="income">Income</button>
+                </div>
+                <input type="hidden" id="type" value="expense">
+            </div>
+
+            <div class="field">
+                <label class="field__label" for="amount">Amount (€)</label>
+                <input class="field__input field__input--amount" type="number" id="amount" min="0.01" step="0.01" placeholder="0.00" required>
+            </div>
+
+            <div class="field">
+                <label class="field__label" for="category">Category</label>
+                <select class="field__input field__select" id="category" required>
+                    <option value="">Choose one category...</option>
+                    <optgroup label="Expenses">
+                        <option value="Food">Alimentation</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Housing">House / Rent</option>
+                        <option value="Health">Health</option>
+                        <option value="Entertainment">Entertaintment</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Other">Other</option>
+                    </optgroup>
+                    <optgroup label="Incomes">
+                        <option value="Salary">Salary</option>
+                        <option value="Freelance">Freelance</option>
+                        <option value="Investment">Investment</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="field">
+                <label class="field__label" for="description">Description (optional)</label>
+                <input class="field__input" type="text" id="description" placeholder="Ex: supermarket shopping">
+            </div>
+
+            <div class="field">
+                <label class="field__label" for="date">Date</label>
+                <input class="field__input" type="date" id="data" required>
+            </div>
+
+            <button type="submit" class="btn btn--primary">Save transaction</button>
+        </form>
+        <div class="message" id="message"></div>
+     </main>
+     <script type="module" src="add.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!--- NAVEGATION -->
+    <nav class="nav">
+        <span class="nav-logo">Tracker</span>
+        <div class="nav-links">
+            <a href="index.html"    class="nav-link active">Summery</a>
+            <a href="add.html"      class="nav-link">Add</a>
+            <a href="history.html"  class="nav-link">History</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- BALANCE CARDS -->
+        <section class="balance-cards">
+            <div class="card card--balance">
+                <span class="card__label">Total balance</span>
+                <span class="card__amount" id="balance">- €</span>
+            </div>
+
+            <div class="card card--income">
+                <span class="card__label">Incomes</span>
+                <span class="card__amount" id="total-income">- €</span>
+            </div>
+
+            <div class="card card--expense">
+                <span class="card__label">Expenses</span>
+                <span class="card__amount" id="total-expense">- €</span>
+            </div>
+        </section>
+
+        <!-- LAST TRANSACTIONS -->
+         <section class="section">
+            <div class="section__header">
+                <h2 class="section__title">Last transactions</h2>
+                <a href="add.html" class="btn btn--small">+Add</a>
+            </div>
+
+            <ul class="transaction-list" id="transaction-list">
+                <li class="transaction-list__empty">Loading...</li>
+            </ul>
+
+            <a href="history.html" class="link-all">See all -></a>
+         </section>
+    </main>
+
+    <!-- Scripts: first data, next UI -->
+     <script type="module">
+        import { getExpenses, getFinancialSummery } from './data.js';
+        import { renderTransactionList, renderBalance } from './ui.js';
+
+        // When page loads, fill all
+        const summery = getFinancialSummery();
+        const expenses = getExpenses();
+
+        // Show balance
+        renderBalance(summery);
+
+        // Show last 5 transactions
+        const recent = [...expenses].sort((a, b) => new Date(b.data) - new Date(a.data)).slice(0, 5);
+
+        renderTransactionList(recent, 'transaction-list');
+     </script>
+</body>  
+</html>

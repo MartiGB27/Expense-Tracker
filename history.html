@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History - Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    
+    <!-- NAVEGATION -->
+     <nav class="nav">
+        <span class="nav-logo">Tracker</span>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Summery</a>
+            <a href="add.html" class="nav-link">Add</a>
+            <a href="history.html" class="nav-link active">History</a>
+        </div>
+     </nav>
+
+     <main class="container">
+        <div class="history-header">
+            <h1 class="section__title">History</h1>
+
+            <!-- FILTERS -->
+             <div class="filters">
+                <select class="filter-select" id="filter-type">
+                    <option value="">All types</option>
+                    <option value="expense">Expenses</option>
+                    <option value="income">Incomes</option>
+                </select>
+
+                <select class="filter-select" id="filter-category">
+                    <option value="">All categories</option>
+                    <optgroup label="Expenses">
+                        <option value="Food">Alimentation</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Housing">House / Rent</option>
+                        <option value="Health">Health</option>
+                        <option value="Entertainment">Entertaintment</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Other">Other</option>
+                    </optgroup>
+                    <optgroup label="Ingressos">
+                        <option value="Salary">Salary</option>
+                        <option value="Freelance">Freelance</option>
+                        <option value="Investment">Investment</option>
+                    </optgroup>
+                </select>
+
+                <select class="filter-select" id="filter-month">
+                    <option value="">All months</option>
+                    <!-- Dynamicly filled by history.js -->
+                </select>
+             </div>
+        </div>
+
+        <!-- LIST - filled by history.js -->
+         <ul class="transaction-list" id="transaction-list">
+            <li class="transaction-list__empty">Loading...</li>
+         </ul>
+         
+        <!-- FOOTER WITH TOTAL AND EXPORTATION -->
+         <div class="history-footer">
+            <span class="history-total" id="history-total"></span>
+            <button class="btn btn--small" id="btn-export">EXPORT CSV</button>
+         </div>
+     </main>
+
+     <script type="module" src="history.js"></script>
+</body>
+</html>
